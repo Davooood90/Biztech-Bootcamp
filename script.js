@@ -11,5 +11,17 @@ function handTaskSubmission(event) {
     } else {
         console.log("The task included is:", task);
         document.getElementById("taskInput").value = '';
+
+        addTask(task);
+        
     }
+}
+
+function addTask(task) {
+    let newElement = document.createElement("li");
+    let count = document.getElementById("taskList").getElementsByTagName("li").length + 1
+    newElement.textContent = "Task " + count + ": " + task;
+
+    let listfound = document.getElementById("taskList");
+    listfound.appendChild(newElement);
 }

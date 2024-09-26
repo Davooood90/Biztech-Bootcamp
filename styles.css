@@ -62,3 +62,11 @@ ul {
     margin-top: 20px;
     list-style-type: none;
 }
+
+li {
+    padding: 10px;
+    border: 1px solid rgb(149, 166, 198);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: #2e4f91;
+}
