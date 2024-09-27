@@ -13,7 +13,7 @@ function handTaskSubmission(event) {
         document.getElementById("taskInput").value = '';
 
         addTask(task);
-        
+
     }
 }
 
@@ -24,4 +24,25 @@ function addTask(task) {
 
     let listfound = document.getElementById("taskList");
     listfound.appendChild(newElement);
+}
+
+
+window.addEventListener("DOMContentLoaded", fetchTasks);
+
+function fetchTasks() {
+    fetch("http://localhost:3000/tasks")
+        .then((response) => response.json())
+        .then((tasks) => {
+            const taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                const newTask = document.createElement("li");
+                newTask.textContent = tasks[i].task;
+                taskList.appendChild(newTask);
+            }
+        })
+        .catch((error) => {
+            console.log("Error fetching tasks:", error)
+        });
 }
